@@ -164,3 +164,45 @@ Ferragista_Backend/
         └── java/com/ferragista/
             └── FerragistaBackendApplicationTests.java
 ```
+
+---
+
+## 🧪 Testes Automatizados (Projeto N2 – Testes de Software)
+
+| Nível | Framework | Mínimo exigido | Implementado | Local |
+| :--- | :---: | :---: | :---: | :--- |
+| Unitários | **JUnit 5** (+ Mockito) | 3 | **11** | `src/test/java/com/ferragista/unit` |
+| API REST | **REST-assured** | 2 | **6** | `src/test/java/com/ferragista/api` |
+| Integração / E2E | **Selenium WebDriver** | 2 | **5** | `src/test/java/com/ferragista/e2e` |
+
+### Testes Unitários (JUnit) – sem banco e sem Spring
+- `PasswordUtilsTest` (3): hash determinístico, validação de senha correta/incorreta e senha vazia.
+- `ProdutoServiceTest` (4): débito de estoque, estoque insuficiente, estorno e produto não encontrado.
+- `VendaServiceTest` (4): cálculo do total + baixa de estoque, venda sem itens, cancelamento com estorno e cancelamento duplicado.
+
+### Testes de API (REST-assured) – sobem a aplicação em porta aleatória
+- `AuthApiTest` (3): login válido (200 + token), login inválido (401) e `/api/auth/me` com/sem token.
+- `ProdutoApiTest` (3): CRUD completo de produto (201/200/204/404), validação de dados inválidos (400) e fluxo de venda (baixa de estoque, estoque insuficiente e cancelamento com estorno).
+
+### Testes de Integração / E2E (Selenium) – controlam o Chrome de verdade
+- `LoginE2ETest` (3): login válido leva ao painel, login inválido mostra erro, painel sem login redireciona.
+- `ProdutoE2ETest` (2): cadastrar produto pela tela e editar + excluir produto pela tela.
+
+### Como executar os testes
+Pré-requisitos: **Java 17+**, **Maven** e **Google Chrome** instalado (o Selenium baixa o driver automaticamente, é preciso internet na primeira execução).
+
+```bash
+# Todos os testes (o Chrome abre na tela — ideal para gravar o vídeo)
+mvn test
+
+# Sem abrir janela do navegador
+mvn test -Dselenium.headless=true
+
+# Apenas um nível de teste
+mvn test -Dtest="com.ferragista.unit.*Test"
+mvn test -Dtest="com.ferragista.api.*Test"
+mvn test -Dtest="com.ferragista.e2e.*Test"
+```
+
+> Não é necessário subir o sistema antes: cada classe de teste de API/E2E inicia a aplicação sozinha (H2 em memória com os dados do `DataInitializer`).
+> Os relatórios ficam em `target/surefire-reports/`.

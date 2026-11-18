@@ -46,6 +46,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- ===== Dependências de TESTE (Projeto N2) ===== -->
+		<!-- REST-assured: testes de API REST (versão gerenciada pelo Spring Boot) -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Selenium: testes de integração / E2E pela interface web (Selenium Manager baixa o driver sozinho) -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
