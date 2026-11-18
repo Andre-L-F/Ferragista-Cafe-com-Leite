@@ -20,10 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-/**
- * TESTES UNITÁRIOS (JUnit 5 + Mockito) - Regras de estoque do ProdutoService.
- * Os repositórios são "mockados": nenhum banco de dados é utilizado.
- */
 @ExtendWith(MockitoExtension.class)
 class ProdutoServiceTest {
 

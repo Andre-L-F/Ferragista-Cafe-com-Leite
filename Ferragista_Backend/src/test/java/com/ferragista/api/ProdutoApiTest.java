@@ -9,9 +9,6 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-/**
- * TESTES DE API (REST-assured) - CRUD de Produtos e fluxo de Vendas.
- */
 class ProdutoApiTest extends ApiTestBase {
 
     @Test

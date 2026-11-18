@@ -9,10 +9,6 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Base dos testes de API: sobe a aplicação inteira numa porta aleatória
- * (banco H2 em memória + DataInitializer) e aponta o REST-assured para ela.
- */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 abstract class ApiTestBase {
 
@@ -25,7 +21,6 @@ abstract class ApiTestBase {
         RestAssured.port = port;
     }
 
-    /** Faz login com o usuário informado e devolve o token Bearer. */
     protected String login(String usuario, String senha) {
         return RestAssured.given()
                 .contentType(ContentType.JSON)
@@ -35,7 +30,7 @@ abstract class ApiTestBase {
                 .extract().path("token");
     }
 
-    /** Monta o JSON de um produto válido. */
+    // Monta o JSON do produto que vai ser aceito.
     protected Map<String, Object> produtoValido(String nome, double preco, int estoque) {
         Map<String, Object> produto = new HashMap<>();
         produto.put("nome", nome);

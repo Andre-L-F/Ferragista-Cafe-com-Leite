@@ -26,9 +26,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-/**
- * TESTES UNITÁRIOS (JUnit 5 + Mockito) - Regras de negócio de Vendas.
- */
 @ExtendWith(MockitoExtension.class)
 class VendaServiceTest {
 

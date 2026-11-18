@@ -6,10 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * TESTES UNITÁRIOS (JUnit 5) - Segurança de senhas.
- * Não sobem o Spring: testam a classe isoladamente.
- */
+
 class PasswordUtilsTest {
 
     @Test
